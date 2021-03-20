@@ -45,7 +45,7 @@ class TestAddMember:
         time.sleep(1)
         self.driver.back()
 
-        #获取toast来断言
+        #  获取toast来断言
         self.driver.find_element(MobileBy.XPATH,'//*[@text="王者荣耀"]').click()
         elements = self.driver.find_elements(MobileBy.XPATH,'//*[@resource-id="com.tencent.wework:id/icn"]/android.widget.TextView')
         elements_list = []
