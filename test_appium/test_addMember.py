@@ -27,6 +27,7 @@ class TestAddMember:
     #添加成员
     def test_add_member(self):
         self.driver.find_element(MobileBy.XPATH,'//*[@text="通讯录"]').click()
+        # 当添加成员多了之后,需要滑动查找添加成员按钮
         self.driver.find_element(MobileBy.XPATH,'//*[@text="添加成员"]').click()
         self.driver.find_element(MobileBy.XPATH,'//*[@resource-id="com.tencent.wework:id/cox"]').click()
 
@@ -44,7 +45,7 @@ class TestAddMember:
         time.sleep(1)
         self.driver.back()
 
-
+        #获取toast来断言
         self.driver.find_element(MobileBy.XPATH,'//*[@text="王者荣耀"]').click()
         elements = self.driver.find_elements(MobileBy.XPATH,'//*[@resource-id="com.tencent.wework:id/icn"]/android.widget.TextView')
         elements_list = []
