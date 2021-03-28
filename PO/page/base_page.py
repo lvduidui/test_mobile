@@ -17,4 +17,4 @@ class BasePage:
             steps:list[dict]= yaml.safe_load(f)
             for step in steps:
                 if 'by' in step.keys():
-
+                    pass
