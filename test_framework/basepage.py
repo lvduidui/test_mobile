@@ -1,3 +1,6 @@
+from pprint import pprint
+
+import yaml
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.remote.webdriver import WebDriver
 
@@ -20,6 +23,10 @@ class BasePage:
     def find_and_getText(self, locator):
         return self.find(locator).text
 
+    # 封装send_keys
+    def send(self,locator,content):
+        self.find(locator).send_keys(content)
+
     # 滑动找到元素并点击
     def scroll_and_click(self, text):
         ele = (MobileBy.ANDROID_UIAUTOMATOR,
@@ -28,3 +35,24 @@ class BasePage:
                'scrollIntoView(new UiSelector().'
                f'text("{text}").instance(0));')
         self.find_and_click(ele)
+
+    # 解析yaml文件,实现关键字驱动
+    def  run_keys(self,path,operation=None):
+        with open(path,'r',encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+
+        keys = data[operation]
+        # print(keys)
+
+        for key in keys:
+            action = key['action']
+            if action == 'find_and_click':
+                self.find_and_click(key['locator'])
+            elif action == 'send':
+                self.send(key['locator'],key['content'])
+
+
+
+if __name__ == '__main__':
+
+    BasePage().run_keys('page/main_page.yaml','goto_market')

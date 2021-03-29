@@ -1,0 +1,10 @@
+# 打开行情,点击搜索,输入内容
+goto_market:
+  - action: find_and_click
+    locator: [xpath,"//*[@text='行情']"]
+
+goto_shares_search:
+  - action: find_and_click
+    locator: [xpath,"//*[@resource-id='com.xueqiu.android:id/action_search']"]
+  - action: send
+    content: "腾讯音乐"
