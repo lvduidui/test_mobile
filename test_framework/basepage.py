@@ -43,7 +43,6 @@ class BasePage:
 
         keys = data[operation]
         # print(keys)
-
         for key in keys:
             action = key['action']
             if action == 'find_and_click':

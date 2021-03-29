@@ -11,7 +11,6 @@ class MainPage(BasePage):
         self.find_and_click((By.ID, 'home_search'))
         return SearchPage(self.driver)
 
-
     def goto_market(self):
         self.run_keys('../page/main_page.yaml','goto_market')
         return MarketPage(self.driver)
